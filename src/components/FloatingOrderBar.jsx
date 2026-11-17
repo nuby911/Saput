@@ -24,9 +24,11 @@ export default function FloatingOrderBar() {
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="bg-[#FFFDF9] w-full max-w-lg rounded-t-3xl sm:rounded-3xl border border-[#E8D2B5] shadow-2xl p-5 sm:p-6 max-h-[85vh] flex flex-col justify-between"
+            className="bg-[#FFFDF9] w-full max-w-lg rounded-t-[2rem] sm:rounded-3xl border border-[#E8D2B5] shadow-2xl p-5 sm:p-6 max-h-[85vh] flex flex-col justify-between pb-[max(1.5rem,env(safe-area-inset-bottom))]"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Mobile Drag Indicator */}
+            <div className="w-12 h-1.5 rounded-full bg-neutral-300 mx-auto mb-3 sm:hidden" />
             {/* Modal Header */}
             <div className="flex items-center justify-between pb-3 border-b border-neutral-200">
               <div className="flex items-center gap-2">
@@ -118,7 +120,7 @@ export default function FloatingOrderBar() {
 
               <button
                 onClick={handleCheckout}
-                className="btn-tactile w-full py-3.5 px-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-heading font-bold rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-[#25D366]/20"
+                className="btn-tactile w-full min-h-[50px] py-3.5 px-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-heading font-bold rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-[#25D366]/20 touch-manipulation select-none"
               >
                 <MessageCircle className="w-5 h-5 fill-white" />
                 <span>Lanjut Pesan ke WhatsApp</span>
@@ -129,7 +131,7 @@ export default function FloatingOrderBar() {
       )}
 
       {/* Floating Bottom Bar (Always fixed at bottom when items > 0) */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#4A151D] text-[#FAF4E8] border-t-2 border-[#E5A93C] shadow-2xl px-4 py-3 pb-safe">
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#4A151D] text-[#FAF4E8] border-t-2 border-[#E5A93C] shadow-2xl px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         <div className="max-w-4xl mx-auto flex items-center justify-between gap-3">
           
           {/* Left summary & toggle button */}

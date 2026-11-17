@@ -67,34 +67,44 @@ export default function ProductCard({ product }) {
         </div>
 
         {/* Content Body */}
-        <div className="p-5 sm:p-6 space-y-4">
+        <div className="p-4 sm:p-6 space-y-3.5">
           <div>
             <div className="flex items-center justify-between gap-2 mb-1">
               <span className="text-xs font-bold uppercase tracking-wider text-[#D33A2C]">
                 {product.category}
               </span>
             </div>
-            <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#241718]">
+            <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#241718] text-balance">
               {product.name}
             </h3>
-            <p className="text-sm text-neutral-600 leading-relaxed mt-1.5">
+            <p className="text-sm text-neutral-600 leading-relaxed mt-1">
               {product.description}
             </p>
           </div>
 
           {/* Add-on Toggle (Khusus Sate Taichan - Opsi Lontong) */}
           {product.hasAddon && (
-            <div className="bg-[#FAF4E8] p-3.5 rounded-2xl border border-[#E8D2B5]">
-              <label className="flex items-center justify-between cursor-pointer select-none">
-                <div className="flex items-center gap-2.5">
-                  <input
-                    type="checkbox"
-                    checked={withLontong}
-                    onChange={(e) => setWithLontong(e.target.checked)}
-                    className="w-5 h-5 rounded text-[#4A151D] focus:ring-[#4A151D] border-[#D9C8B0] accent-[#4A151D] cursor-pointer"
-                  />
+            <div
+              onClick={() => setWithLontong(!withLontong)}
+              className={`p-3.5 rounded-2xl border transition-all cursor-pointer select-none active:scale-[0.99] touch-manipulation ${
+                withLontong
+                  ? 'bg-[#F4ECE1] border-[#4A151D] shadow-xs'
+                  : 'bg-[#FAF4E8] border-[#E8D2B5] hover:border-[#D9C8B0]'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div
+                    className={`w-6 h-6 rounded-lg flex items-center justify-center border transition-colors ${
+                      withLontong
+                        ? 'bg-[#4A151D] border-[#4A151D] text-white'
+                        : 'bg-white border-[#D9C8B0]'
+                    }`}
+                  >
+                    {withLontong && <Check className="w-4 h-4 stroke-[3]" />}
+                  </div>
                   <div>
-                    <span className="text-sm font-bold text-[#241718] block">
+                    <span className="text-sm font-bold text-[#241718] block leading-tight">
                       {product.addonName}
                     </span>
                     <span className="text-xs text-neutral-500">
@@ -102,17 +112,17 @@ export default function ProductCard({ product }) {
                     </span>
                   </div>
                 </div>
-                <span className="text-xs font-extrabold text-[#4A151D] bg-[#FFFDF9] px-2 py-1 rounded-lg border border-[#E8D2B5]">
+                <span className="text-xs font-extrabold text-[#4A151D] bg-[#FFFDF9] px-2.5 py-1 rounded-xl border border-[#E8D2B5] shadow-2xs">
                   +{formatRupiah(product.addonPrice)}
                 </span>
-              </label>
+              </div>
             </div>
           )}
         </div>
       </div>
 
       {/* Card Footer: Stepper & CTA */}
-      <div className="p-5 sm:p-6 pt-0 space-y-3">
+      <div className="p-4 sm:p-6 pt-0 space-y-3">
         {/* Price & Quantity Selector */}
         <div className="flex items-center justify-between pt-3 border-t border-neutral-100">
           <div>
@@ -122,26 +132,26 @@ export default function ProductCard({ product }) {
             </div>
           </div>
 
-          {/* Quantity Stepper */}
-          <div className="flex items-center gap-2 bg-[#FAF4E8] border border-[#E8D2B5] rounded-xl p-1">
+          {/* Quantity Stepper (Mobile Touch Optimized) */}
+          <div className="flex items-center gap-1.5 bg-[#FAF4E8] border border-[#E8D2B5] rounded-2xl p-1 select-none">
             <button
               onClick={decrementQty}
               disabled={qty <= 1 || !product.isAvailable}
               aria-label="Kurangi Jumlah"
-              className="w-8 h-8 flex items-center justify-center rounded-lg bg-white text-[#4A151D] hover:bg-neutral-100 disabled:opacity-40 disabled:cursor-not-allowed shadow-xs transition-colors"
+              className="w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center rounded-xl bg-white text-[#4A151D] hover:bg-neutral-100 active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed shadow-xs transition-transform touch-manipulation"
             >
-              <Minus className="w-3.5 h-3.5" />
+              <Minus className="w-4 h-4" />
             </button>
-            <span className="w-7 text-center font-bold text-sm text-[#241718]">
+            <span className="w-8 text-center font-bold text-sm text-[#241718] tabular-nums">
               {qty}
             </span>
             <button
               onClick={incrementQty}
               disabled={!product.isAvailable}
               aria-label="Tambah Jumlah"
-              className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#4A151D] text-white hover:bg-[#370F15] disabled:opacity-40 disabled:cursor-not-allowed shadow-xs transition-colors"
+              className="w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center rounded-xl bg-[#4A151D] text-white hover:bg-[#370F15] active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed shadow-xs transition-transform touch-manipulation"
             >
-              <Plus className="w-3.5 h-3.5" />
+              <Plus className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -150,7 +160,7 @@ export default function ProductCard({ product }) {
         <button
           onClick={handleAddToCart}
           disabled={!product.isAvailable}
-          className={`btn-tactile w-full py-3.5 px-4 rounded-2xl font-heading font-bold text-sm sm:text-base flex items-center justify-center gap-2 transition-all shadow-sm ${
+          className={`btn-tactile w-full min-h-[48px] py-3.5 px-4 rounded-2xl font-heading font-bold text-sm sm:text-base flex items-center justify-center gap-2 select-none touch-manipulation shadow-sm transition-all ${
             justAdded
               ? 'bg-emerald-600 text-white'
               : 'bg-[#4A151D] hover:bg-[#370F15] text-[#FAF4E8]'

@@ -18,10 +18,10 @@ export default function ComboSection({ comboProduct }) {
   };
 
   return (
-    <section className="my-10">
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#4A151D] via-[#5D1B26] to-[#4A151D] text-[#FAF4E8] rounded-3xl p-6 sm:p-8 border-2 border-[#E5A93C] shadow-xl">
+    <section className="my-8 sm:my-10">
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#4A151D] via-[#5D1B26] to-[#4A151D] text-[#FAF4E8] rounded-3xl p-5 sm:p-8 border-2 border-[#E5A93C] shadow-xl">
         {/* Decorative corner tag */}
-        <div className="absolute -top-1 -right-1 bg-[#E5A93C] text-[#370F15] text-xs font-black px-4 py-1.5 rounded-bl-2xl shadow-md uppercase tracking-wider">
+        <div className="absolute -top-1 -right-1 bg-[#E5A93C] text-[#370F15] text-[11px] sm:text-xs font-black px-3.5 sm:px-4 py-1.5 rounded-bl-2xl shadow-md uppercase tracking-wider">
           ⭐ Rekomendasi Paling Hemat
         </div>
 
@@ -76,7 +76,7 @@ export default function ComboSection({ comboProduct }) {
 
             <button
               onClick={handleAddCombo}
-              className={`btn-tactile w-full py-3 px-4 rounded-xl font-heading font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-md ${
+              className={`btn-tactile w-full min-h-[48px] py-3 px-4 rounded-xl font-heading font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-md select-none touch-manipulation active:scale-[0.98] ${
                 justAdded
                   ? 'bg-emerald-500 text-white'
                   : 'bg-[#E5A93C] hover:bg-[#d4962c] text-[#370F15]'

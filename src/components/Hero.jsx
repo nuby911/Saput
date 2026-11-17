@@ -29,13 +29,13 @@ export default function Hero() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-[#FAF4E8] tracking-tight leading-[1.15]">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-[#FAF4E8] tracking-tight leading-[1.15] text-balance">
               Pedas Gurihnya <span className="text-[#E5A93C] underline decoration-[#D33A2C] decoration-wavy decoration-2">Taichan</span>,{' '}
               Dingin Segarnya <span className="text-amber-200">Es Puding</span>.
             </h1>
 
             {/* Body Description */}
-            <p className="text-[#E8D2B5] text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+            <p className="text-[#E8D2B5] text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 text-balance">
               Perpaduan legendaris yang bikin ketagihan! Daging ayam bakar lembut berpadu sambal pedas nampol khas Saput, langsung dibilas manisnya puding sutra dingin.
             </p>
 
@@ -86,7 +86,7 @@ export default function Hero() {
                 </div>
 
                 {/* Overlapping Floating Drink Badge */}
-                <div className="absolute -bottom-5 -left-4 bg-[#4A151D] text-[#FAF4E8] p-2.5 rounded-2xl shadow-xl border-2 border-[#E5A93C] flex items-center gap-3">
+                <div className="absolute -bottom-4 left-2 sm:-left-4 bg-[#4A151D] text-[#FAF4E8] p-2.5 rounded-2xl shadow-xl border-2 border-[#E5A93C] flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl overflow-hidden bg-[#FAF4E8] shrink-0">
                     <img
                       src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=300&auto=format&fit=crop"

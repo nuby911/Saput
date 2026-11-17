@@ -19,6 +19,13 @@
 /* Custom smooth scroll & selection */
 html {
   font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  touch-action: manipulation;
 }
 
 h1, h2, h3, h4, .font-heading {

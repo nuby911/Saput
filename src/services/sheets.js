@@ -25,6 +25,30 @@ function getFallbackMenu() {
 }
 
 /**
+ * Normalisasi URL gambar:
+ * 1. Mendukung file lokal di folder public/ (contoh: sate.jpg atau /sate.jpg)
+ * 2. Mendukung link share Google Drive (otomatis dikonversi ke direct image link)
+ * 3. Mendukung URL publik standar (https://...)
+ */
+export function normalizeImageUrl(url) {
+  if (!url || typeof url !== 'string') return '';
+  const trimmed = url.trim();
+
+  // Jika link Google Drive (https://drive.google.com/file/d/ID/view...)
+  const gDriveMatch = trimmed.match(/\/d\/([a-zA-Z0-9_-]+)/) || trimmed.match(/id=([a-zA-Z0-9_-]+)/);
+  if (trimmed.includes('drive.google.com') && gDriveMatch && gDriveMatch[1]) {
+    return `https://lh3.googleusercontent.com/d/${gDriveMatch[1]}`;
+  }
+
+  // Jika berupa nama file gambar lokal di folder public/ (misal: sate.jpg atau sate.png)
+  if (!trimmed.startsWith('http://') && !trimmed.startsWith('https://')) {
+    return trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+  }
+
+  return trimmed;
+}
+
+/**
  * Service to fetch menu items from a Google Sheets document published as CSV.
  * To use: Publish Google Sheet -> File > Share > Publish to web > CSV.
  * Put the URL into VITE_GOOGLE_SHEETS_CSV_URL in .env or configure here.
@@ -61,7 +85,7 @@ export async function fetchMenuFromSheets() {
       const basePrice = parseInt(cols[3]?.replace(/[^0-9]/g, '') || '0', 10);
       const unit = cols[4]?.trim();
       const description = cols[5]?.trim();
-      const image = cols[6]?.trim();
+      const image = normalizeImageUrl(cols[6]);
       const isAvailable = cols[7]?.toLowerCase() === 'tersedia' || cols[7]?.toLowerCase() === 'true';
       const hasAddon = cols[8]?.toLowerCase() === 'true' || cols[8]?.toLowerCase() === 'ya';
       const addonName = cols[9]?.trim() || '';

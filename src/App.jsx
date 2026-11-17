@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CartProvider } from './context/CartContext';
 import Navbar from './components/Navbar';
+import BundlingTopBar from './components/BundlingTopBar';
 import Hero from './components/Hero';
 import MenuSection from './components/MenuSection';
 import FloatingOrderBar from './components/FloatingOrderBar';
@@ -11,6 +12,7 @@ import { initialMenu } from './data/menuData';
 export default function App() {
   const [menuItems, setMenuItems] = useState(initialMenu);
   const [loading, setLoading] = useState(true);
+  const comboProduct = menuItems.find((m) => m.isCombo);
 
   useEffect(() => {
     async function loadMenu() {
@@ -33,6 +35,9 @@ export default function App() {
       <div className="min-h-[100dvh] flex flex-col bg-[#FAF4E8] text-[#241718]">
         {/* Navigation Bar */}
         <Navbar />
+
+        {/* Top Bundling Announcement Notice */}
+        <BundlingTopBar comboProduct={comboProduct} />
 
         {/* Hero Section */}
         <Hero menuItems={menuItems} />

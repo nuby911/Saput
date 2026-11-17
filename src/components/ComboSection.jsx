@@ -21,7 +21,7 @@ export default function ComboSection({ comboProduct, sateItem, pudingItem }) {
   };
 
   return (
-    <section className="my-8 sm:my-10">
+    <section id="combo-section" className="my-8 sm:my-10 scroll-mt-28">
       <div className="relative overflow-hidden bg-gradient-to-r from-[#4A151D] via-[#5D1B26] to-[#4A151D] text-[#FAF4E8] rounded-3xl p-5 sm:p-8 border-2 border-[#E5A93C] shadow-xl">
         {/* Decorative corner tag */}
         <div className="absolute -top-1 -right-1 bg-[#E5A93C] text-[#370F15] text-[11px] sm:text-xs font-black px-3.5 sm:px-4 py-1.5 rounded-bl-2xl shadow-md uppercase tracking-wider">

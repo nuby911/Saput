@@ -14,18 +14,18 @@ export default function Hero({ menuItems = [] }) {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#4A151D] via-[#5A1B24] to-[#FAF4E8] pt-8 pb-16 px-4">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#4A151D] via-[#5A1B24] to-[#FAF4E8] pt-5 pb-8 sm:pt-8 sm:pb-16 px-4">
       {/* Decorative background subtle elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#D33A2C]/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-[#E5A93C]/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* Left Text Content (7 cols) */}
-          <div className="lg:col-span-7 text-center lg:text-left space-y-5">
+          <div className="lg:col-span-7 text-center lg:text-left space-y-3.5 sm:space-y-5">
             {/* Tag Badge */}
-            <div className="inline-flex items-center gap-2 bg-[#370F15]/90 border border-[#E5A93C]/40 text-[#E5A93C] px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-[#370F15]/90 border border-[#E5A93C]/40 text-[#E5A93C] px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold tracking-wide shadow-sm">
               <Flame className="w-3.5 h-3.5 text-[#D33A2C] fill-[#D33A2C]" />
               <span>Duo Kuliner Paling Nagih</span>
               <span className="w-1 h-1 rounded-full bg-[#E5A93C]"></span>
@@ -33,18 +33,18 @@ export default function Hero({ menuItems = [] }) {
             </div>
 
             {/* Main Headline */}
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-[#FAF4E8] tracking-tight leading-[1.15] text-balance">
+            <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl font-black text-[#FAF4E8] tracking-tight leading-[1.15] text-balance">
               Pedas Gurihnya <span className="text-[#E5A93C] underline decoration-[#D33A2C] decoration-wavy decoration-2">Taichan</span>,{' '}
               Dingin Segarnya <span className="text-amber-200">Es Puding</span>.
             </h1>
 
             {/* Body Description */}
-            <p className="text-[#E8D2B5] text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 text-balance">
+            <p className="text-[#E8D2B5] text-xs sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 text-balance">
               Perpaduan legendaris yang bikin ketagihan! Daging ayam bakar lembut berpadu sambal pedas nampol khas Saput, langsung dibilas manisnya puding sutra dingin.
             </p>
 
-            {/* Quick Feature Badges */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 pt-2 text-xs text-[#FAF4E8]">
+            {/* Quick Feature Badges (Desktop/Tablet) */}
+            <div className="hidden sm:flex flex-wrap items-center justify-center lg:justify-start gap-2.5 pt-1 text-xs text-[#FAF4E8]">
               <span className="bg-[#370F15]/70 border border-[#E5A93C]/30 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
                 🍢 100% Fillet Ayam Pilihan
               </span>
@@ -57,19 +57,19 @@ export default function Hero({ menuItems = [] }) {
             </div>
 
             {/* Call To Action Buttons */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5">
+            <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
               <button
                 onClick={scrollToMenu}
-                className="btn-tactile w-full sm:w-auto flex items-center justify-center gap-2 bg-[#D33A2C] hover:bg-[#B3281C] text-white font-heading font-bold text-base px-6 py-3.5 rounded-2xl shadow-lg shadow-[#D33A2C]/25"
+                className="btn-tactile w-full sm:w-auto flex items-center justify-center gap-2 bg-[#D33A2C] hover:bg-[#B3281C] text-white font-heading font-bold text-sm sm:text-base px-5 py-3 sm:px-6 sm:py-3.5 rounded-2xl shadow-lg shadow-[#D33A2C]/25"
               >
-                <span>Pilih Menu & Pesan Sekarang</span>
+                <span>Lihat 2 Menu & Pesan</span>
                 <ArrowDown className="w-4 h-4 animate-bounce" />
               </button>
             </div>
           </div>
 
-          {/* Right Visual Spotlight (5 cols) */}
-          <div className="lg:col-span-5 flex justify-center">
+          {/* Right Visual Spotlight (Only on desktop/large screens to keep mobile scroll fast) */}
+          <div className="hidden lg:flex lg:col-span-5 justify-center">
             <div className="relative w-full max-w-md">
               {/* Main Card Spotlight */}
               <div className="bg-[#FFFDF9] p-3.5 rounded-3xl shadow-2xl border-4 border-[#FAF4E8] rotate-1 hover:rotate-0 transition-transform duration-300">

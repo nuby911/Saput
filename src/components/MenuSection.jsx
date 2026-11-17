@@ -10,22 +10,19 @@ export default function MenuSection({ menuItems }) {
   const pudingItem = menuItems.find((item) => item.id === 'es-puding') || heroItems[1];
 
   return (
-    <section id="menu-section" className="max-w-5xl mx-auto px-4 py-12">
+    <section id="menu-section" className="max-w-5xl mx-auto px-3 sm:px-4 py-4 sm:py-10">
       {/* Section Header */}
-      <div className="text-center max-w-xl mx-auto mb-10">
-        <span className="text-xs uppercase font-extrabold tracking-widest text-[#D33A2C] bg-[#D33A2C]/10 px-3 py-1 rounded-full">
-          Daftar Menu Saput
+      <div className="text-center max-w-xl mx-auto mb-4 sm:mb-8">
+        <span className="text-[10px] sm:text-xs uppercase font-extrabold tracking-widest text-[#D33A2C] bg-[#D33A2C]/10 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
+          Daftar 2 Menu Saput
         </span>
-        <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#241718] mt-2">
-          Pilihan Menu Terbaik
+        <h2 className="font-heading text-xl sm:text-4xl font-extrabold text-[#241718] mt-1.5">
+          Pilihan Menu Utama
         </h2>
-        <p className="text-sm text-neutral-600 mt-2">
-          Kombinasi juara sate taichan gurih pedas dan kesegaran es puding yang siap dipesan kapan saja.
-        </p>
       </div>
 
-      {/* Duo Grid: 2 Hero Products */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+      {/* Duo Grid: 2 Hero Products SIDE BY SIDE on Mobile & Desktop */}
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-6 lg:gap-8 items-stretch">
         {heroItems.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

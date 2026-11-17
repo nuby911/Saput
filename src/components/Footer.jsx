@@ -108,7 +108,7 @@ export default function Footer() {
               className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs font-bold px-3 py-2 rounded-xl transition-colors shadow-sm"
             >
               <MessageCircle className="w-4 h-4 fill-white" />
-              <span>WhatsApp Admin</span>
+              <span>{storeConfig.whatsappDisplay || 'WhatsApp Admin'}</span>
             </a>
             <p className="text-xs text-[#D9C8B0] block">
               Instagram: <b className="text-[#FAF4E8]">{storeConfig.instagram}</b>

@@ -2,7 +2,8 @@ export const storeConfig = {
   name: "Saput",
   tagline: "Made to Make You Happy",
   description: "Sensasi pedas gurihnya Sate Taichan berpadu sempurna dengan dingin segarnya Es Puding. Dibuat fresh setiap hari dengan bahan berkualitas pilihan.",
-  whatsappNumber: "6281234567890", // Ganti dengan nomor WhatsApp admin toko (format: 628xxx)
+  whatsappNumber: "6285783000970",
+  whatsappDisplay: "+62 857-8300-0970",
   openingHours: "16.00 - 23.00 WIB",
   location: "Jl. Kuliner No. 12, Sentra Kuliner Malam",
   instagram: "@saput.official",

@@ -1,6 +1,6 @@
 import React from 'react';
-import { MessageCircle, Clock, MapPin, Sparkles } from 'lucide-react';
-import { storeConfig } from '../data/menuData';
+import { MessageCircle } from 'lucide-react';
+import { storeConfig } from '../data/menuData.js';
 
 export default function Navbar() {
   const whatsappUrl = `https://wa.me/${storeConfig.whatsappNumber}?text=${encodeURIComponent(
@@ -9,21 +9,6 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 bg-[#4A151D] text-[#FAF4E8] shadow-md border-b border-[#5E1B25]">
-      {/* Top micro-bar for hours & location */}
-      <div className="bg-[#370F15] text-[#D9C8B0] text-xs py-1.5 px-4">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span className="font-medium text-[#FAF4E8]">Buka Hari Ini:</span>
-            <span>{storeConfig.openingHours}</span>
-          </div>
-          <div className="hidden sm:flex items-center gap-1.5 text-xs text-[#D9C8B0]">
-            <MapPin className="w-3.5 h-3.5 text-[#E5A93C]" />
-            <span>{storeConfig.location}</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navbar */}
       <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Brand Logo & Name */}

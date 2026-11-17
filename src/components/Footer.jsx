@@ -1,6 +1,6 @@
 import React from 'react';
-import { Clock, MapPin, MessageCircle, Heart, Phone, Sparkles } from 'lucide-react';
-import { storeConfig } from '../data/menuData';
+import { Calendar, MapPin, MessageCircle, Heart, Sparkles } from 'lucide-react';
+import { storeConfig } from '../data/menuData.js';
 
 export default function Footer() {
   const whatsappUrl = `https://wa.me/${storeConfig.whatsappNumber}?text=${encodeURIComponent(
@@ -78,14 +78,14 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Jam & Layanan */}
+          {/* Jadwal & Layanan */}
           <div className="md:col-span-4 space-y-2.5">
             <h4 className="font-heading font-bold text-base text-[#FAF4E8]">
-              Jam Operasional & Layanan
+              Jadwal & Lokasi
             </h4>
             <div className="flex items-start gap-2 text-xs">
-              <Clock className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
-              <span>Buka Setiap Hari: <b>{storeConfig.openingHours}</b></span>
+              <Calendar className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span className="font-bold text-[#E5A93C]">Buka Perdana 16 Desember Di GSG Polinela</span>
             </div>
             <div className="flex items-start gap-2 text-xs">
               <MapPin className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />

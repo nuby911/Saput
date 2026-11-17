@@ -4,7 +4,7 @@ export const storeConfig = {
   description: "Sensasi pedas gurihnya Sate Taichan berpadu sempurna dengan dingin segarnya Es Puding. Dibuat fresh setiap hari dengan bahan berkualitas pilihan.",
   whatsappNumber: "6285783000970",
   whatsappDisplay: "+62 857-8300-0970",
-  openingHours: "16.00 - 23.00 WIB",
+  openingHours: "Buka Perdana 16 Desember Di GSG Polinela",
   location: "Politeknik Negeri Lampung",
   instagram: "@saput.official",
   deliveryNote: "Melayani Dine-in, Takeaway, dan Antar Langsung area Polinela & sekitarnya.",

@@ -1,4 +1,4 @@
-import { storeConfig } from '../data/menuData';
+import { storeConfig } from '../data/menuData.js';
 
 export function formatRupiah(number) {
   return new Intl.NumberFormat('id-ID', {

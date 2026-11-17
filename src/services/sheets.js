@@ -1,4 +1,4 @@
-import { initialMenu } from '../data/menuData';
+import { initialMenu } from '../data/menuData.js';
 
 /**
  * Service to fetch menu items from a Google Sheets document published as CSV.
@@ -6,7 +6,9 @@ import { initialMenu } from '../data/menuData';
  * Put the URL into VITE_GOOGLE_SHEETS_CSV_URL in .env or configure here.
  */
 export async function fetchMenuFromSheets() {
-  const sheetUrl = import.meta.env.VITE_GOOGLE_SHEETS_CSV_URL;
+  const sheetUrl =
+    (typeof import.meta !== 'undefined' && import.meta.env?.VITE_GOOGLE_SHEETS_CSV_URL) ||
+    process.env?.VITE_GOOGLE_SHEETS_CSV_URL;
 
   if (!sheetUrl) {
     // Gunakan initialMenu default jika URL Google Sheet belum diset
@@ -62,20 +64,20 @@ export async function fetchMenuFromSheets() {
         addonName: addonName || defaultItem?.addonName || '',
         addonPrice: cols[10] !== undefined && cols[10] !== '' ? addonPrice : (defaultItem?.addonPrice || 0),
         isCombo: defaultItem?.isCombo || false,
-        normalPrice: manualNormalPrice > 0 ? manualNormalPrice : (defaultItem?.normalPrice || 0),
+        normalPrice: manualNormalPrice > 0 ? manualNormalPrice : 0,
       };
     });
 
-    // Hitung normalPrice secara dinamis untuk paket combo jika tidak diset manual
+    // Hitung normalPrice secara dinamis: Harga Sate + Harga Minuman (Es Puding)
     const sateItem = parsedMenu.find((m) => m.id === 'sate-taichan');
     const pudingItem = parsedMenu.find((m) => m.id === 'es-puding');
     const autoNormalPrice = 
-      (sateItem ? sateItem.basePrice + (sateItem.addonPrice || 0) : 30000) +
+      (sateItem ? sateItem.basePrice : 15000) +
       (pudingItem ? pudingItem.basePrice : 12000);
 
     parsedMenu.forEach((m) => {
       if (m.isCombo || m.id === 'paket-komplit') {
-        // Jika kolom ke-12 kosong atau 0, gunakan total harga satuan sate + lontong + puding otomatis
+        // Otomatis hasil penjumlahan sate dan minuman jika tidak diisi manual di kolom 12
         if (!m.normalPrice || m.normalPrice === 0) {
           m.normalPrice = autoNormalPrice;
         }

@@ -62,9 +62,6 @@ export default function ComboSection({ comboProduct }) {
                 🍢 1 Porsi Sate Taichan (10 Tusuk)
               </span>
               <span className="bg-black/30 border border-white/10 px-3 py-1 rounded-lg">
-                🍚 1 Lontong Pulen
-              </span>
-              <span className="bg-black/30 border border-white/10 px-3 py-1 rounded-lg">
                 🍧 1 Cup Es Puding Segar
               </span>
             </div>

@@ -1,7 +1,11 @@
 import React from 'react';
 import { Flame, Sparkles, ArrowDown, ShieldCheck, Heart } from 'lucide-react';
+import { formatRupiah } from '../utils/whatsapp.js';
 
-export default function Hero() {
+export default function Hero({ menuItems = [] }) {
+  const sateItem = menuItems.find((m) => m.id === 'sate-taichan') || menuItems[0];
+  const pudingItem = menuItems.find((m) => m.id === 'es-puding') || menuItems[1];
+
   const scrollToMenu = () => {
     const el = document.getElementById('menu-section');
     if (el) {
@@ -71,8 +75,8 @@ export default function Hero() {
               <div className="bg-[#FFFDF9] p-3.5 rounded-3xl shadow-2xl border-4 border-[#FAF4E8] rotate-1 hover:rotate-0 transition-transform duration-300">
                 <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden bg-neutral-900">
                   <img
-                    src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop"
-                    alt="Sate Taichan Saput"
+                    src={sateItem?.image || "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop"}
+                    alt={sateItem?.name || "Sate Taichan"}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex flex-col justify-end p-4 text-white">
@@ -80,7 +84,7 @@ export default function Hero() {
                       Signature Menu
                     </span>
                     <h3 className="font-heading text-lg font-bold">
-                      Sate Taichan Juara & Sambal Nampol
+                      {sateItem?.name || "Sate Taichan"}
                     </h3>
                   </div>
                 </div>
@@ -89,15 +93,17 @@ export default function Hero() {
                 <div className="absolute -bottom-4 left-2 sm:-left-4 bg-[#4A151D] text-[#FAF4E8] p-2.5 rounded-2xl shadow-xl border-2 border-[#E5A93C] flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl overflow-hidden bg-[#FAF4E8] shrink-0">
                     <img
-                      src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=300&auto=format&fit=crop"
-                      alt="Es Puding"
+                      src={pudingItem?.image || "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=300&auto=format&fit=crop"}
+                      alt={pudingItem?.name || "Es Puding"}
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="pr-2">
                     <p className="text-[10px] text-[#E5A93C] font-bold uppercase">Pereda Pedas</p>
-                    <p className="font-heading text-sm font-bold">Es Puding Segar</p>
-                    <p className="text-xs text-amber-200 font-semibold">Cuma Rp 12.000</p>
+                    <p className="font-heading text-sm font-bold">{pudingItem?.name || "Es Puding"}</p>
+                    <p className="text-xs text-amber-200 font-semibold">
+                      Cuma {formatRupiah(pudingItem?.basePrice || 10000)}
+                    </p>
                   </div>
                 </div>
 

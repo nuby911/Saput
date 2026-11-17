@@ -35,7 +35,7 @@ export default function App() {
         <Navbar />
 
         {/* Hero Section */}
-        <Hero />
+        <Hero menuItems={menuItems} />
 
         {/* Main Content Area */}
         <main className="flex-grow">

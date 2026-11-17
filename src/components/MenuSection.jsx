@@ -6,6 +6,8 @@ export default function MenuSection({ menuItems }) {
   // Filter individual hero items (Sate Taichan & Es Puding)
   const heroItems = menuItems.filter((item) => !item.isCombo);
   const comboItem = menuItems.find((item) => item.isCombo);
+  const sateItem = menuItems.find((item) => item.id === 'sate-taichan') || heroItems[0];
+  const pudingItem = menuItems.find((item) => item.id === 'es-puding') || heroItems[1];
 
   return (
     <section id="menu-section" className="max-w-5xl mx-auto px-4 py-12">
@@ -30,7 +32,13 @@ export default function MenuSection({ menuItems }) {
       </div>
 
       {/* Combo Upselling Section */}
-      {comboItem && <ComboSection comboProduct={comboItem} />}
+      {comboItem && (
+        <ComboSection
+          comboProduct={comboItem}
+          sateItem={sateItem}
+          pudingItem={pudingItem}
+        />
+      )}
     </section>
   );
 }

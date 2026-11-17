@@ -3,7 +3,7 @@ import { Sparkles, ShoppingBag, Check, Flame } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { formatRupiah } from '../utils/whatsapp';
 
-export default function ComboSection({ comboProduct }) {
+export default function ComboSection({ comboProduct, sateItem, pudingItem }) {
   const { addToCart } = useCart();
   const [justAdded, setJustAdded] = useState(false);
 
@@ -59,10 +59,10 @@ export default function ComboSection({ comboProduct }) {
             {/* Content Pills */}
             <div className="flex flex-wrap gap-2 text-xs font-medium text-[#FAF4E8]">
               <span className="bg-black/30 border border-white/10 px-3 py-1 rounded-lg">
-                🍢 1 Porsi Sate Taichan (10 Tusuk)
+                🍢 {sateItem?.unit || '1 Porsi'} {sateItem?.name || 'Sate Taichan'}
               </span>
               <span className="bg-black/30 border border-white/10 px-3 py-1 rounded-lg">
-                🍧 1 Cup Es Puding Segar
+                🍧 {pudingItem?.unit || '1 Cup'} {pudingItem?.name || 'Es Puding'}
               </span>
             </div>
           </div>

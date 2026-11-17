@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, MapPin, MessageCircle, Heart, Sparkles } from 'lucide-react';
+import { Calendar, MapPin, MessageCircle } from 'lucide-react';
 import { storeConfig } from '../data/menuData.js';
 
 export default function Footer() {
@@ -118,11 +118,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom copyright */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#D9C8B0] gap-2">
+        <div className="pt-6 text-center text-xs text-[#D9C8B0]">
           <p>© {new Date().getFullYear()} Saput. All rights reserved.</p>
-          <p className="flex items-center gap-1">
-            Dibuat penuh selera <Heart className="w-3.5 h-3.5 text-[#D33A2C] fill-[#D33A2C]" /> untuk pecinta kuliner
-          </p>
         </div>
 
       </div>

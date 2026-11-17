@@ -1,5 +1,29 @@
 import { initialMenu } from '../data/menuData.js';
 
+const CACHE_KEY = 'saput_cached_menu_v1';
+
+/**
+ * Mengambil data cadangan:
+ * 1. Coba dari cache lokal terbaru di browser (Last Known Good data)
+ * 2. Jika tidak ada, gunakan initialMenu bawaan
+ */
+function getFallbackMenu() {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    try {
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.warn('Gagal membaca cache menu:', e);
+    }
+  }
+  return initialMenu;
+}
+
 /**
  * Service to fetch menu items from a Google Sheets document published as CSV.
  * To use: Publish Google Sheet -> File > Share > Publish to web > CSV.
@@ -11,8 +35,7 @@ export async function fetchMenuFromSheets() {
     process.env?.VITE_GOOGLE_SHEETS_CSV_URL;
 
   if (!sheetUrl) {
-    // Gunakan initialMenu default jika URL Google Sheet belum diset
-    return initialMenu;
+    return getFallbackMenu();
   }
 
   try {
@@ -25,7 +48,7 @@ export async function fetchMenuFromSheets() {
     const rows = parseCSV(csvText);
 
     if (rows.length < 2) {
-      return initialMenu;
+      return getFallbackMenu();
     }
 
     // Mapping baris spreadsheet ke model menu
@@ -84,10 +107,22 @@ export async function fetchMenuFromSheets() {
       }
     });
 
-    return parsedMenu.length > 0 ? parsedMenu : initialMenu;
+    if (parsedMenu.length > 0) {
+      // Simpan data sukses terbaru ke cache browser
+      if (typeof window !== 'undefined' && window.localStorage) {
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify(parsedMenu));
+        } catch {
+          // Abaikan jika quota localStorage penuh
+        }
+      }
+      return parsedMenu;
+    }
+
+    return getFallbackMenu();
   } catch (err) {
-    console.warn('Menggunakan menu cadangan (fallback) karena:', err.message);
-    return initialMenu;
+    console.warn('Google Sheets bermasalah atau offline, menggunakan data cadangan (fallback):', err.message);
+    return getFallbackMenu();
   }
 }
 

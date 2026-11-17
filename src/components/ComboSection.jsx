@@ -9,6 +9,9 @@ export default function ComboSection({ comboProduct }) {
 
   if (!comboProduct) return null;
 
+  const normalPrice = comboProduct.normalPrice || 0;
+  const savings = normalPrice > comboProduct.basePrice ? normalPrice - comboProduct.basePrice : 0;
+
   const handleAddCombo = () => {
     addToCart(comboProduct, 1, false);
     setJustAdded(true);
@@ -22,17 +25,24 @@ export default function ComboSection({ comboProduct }) {
       <div className="relative overflow-hidden bg-gradient-to-r from-[#4A151D] via-[#5D1B26] to-[#4A151D] text-[#FAF4E8] rounded-3xl p-5 sm:p-8 border-2 border-[#E5A93C] shadow-xl">
         {/* Decorative corner tag */}
         <div className="absolute -top-1 -right-1 bg-[#E5A93C] text-[#370F15] text-[11px] sm:text-xs font-black px-3.5 sm:px-4 py-1.5 rounded-bl-2xl shadow-md uppercase tracking-wider">
-          ⭐ Rekomendasi Paling Hemat
+          {savings > 0 ? `⭐ Lebih Hemat ${formatRupiah(savings)}` : '⭐ Rekomendasi Menu Komplit'}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
           {/* Left: Info & Description */}
           <div className="md:col-span-7 space-y-3">
             <div className="flex items-center gap-2">
-              <span className="bg-[#D33A2C] text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                <Flame className="w-3 h-3 fill-white" />
-                HEMAT Rp 4.000
-              </span>
+              {savings > 0 ? (
+                <span className="bg-[#D33A2C] text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                  <Flame className="w-3 h-3 fill-white" />
+                  HEMAT {formatRupiah(savings)}
+                </span>
+              ) : (
+                <span className="bg-[#E5A93C] text-[#370F15] text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                  <Sparkles className="w-3 h-3" />
+                  Paket Komplit
+                </span>
+              )}
               <span className="text-xs text-[#E5A93C] font-semibold">
                 Menu Bundling Favorit
               </span>
@@ -63,9 +73,11 @@ export default function ComboSection({ comboProduct }) {
           {/* Right: Pricing & CTA */}
           <div className="md:col-span-5 bg-[#370F15]/90 border border-[#E5A93C]/30 p-5 rounded-2xl flex flex-col justify-between items-center text-center space-y-3">
             <div>
-              <span className="text-xs text-neutral-400 line-through block">
-                Harga Normal: {formatRupiah(comboProduct.normalPrice || 42000)}
-              </span>
+              {normalPrice > comboProduct.basePrice && (
+                <span className="text-xs text-neutral-400 line-through block">
+                  Harga Normal: {formatRupiah(normalPrice)}
+                </span>
+              )}
               <div className="font-heading text-3xl font-black text-[#E5A93C]">
                 {formatRupiah(comboProduct.basePrice)}
               </div>

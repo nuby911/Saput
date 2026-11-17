@@ -45,6 +45,9 @@ export async function fetchMenuFromSheets() {
       // Cari badges / combo status dari data awal jika ada
       const defaultItem = initialMenu.find((m) => m.id === id);
 
+      // Opsi normalPrice manual dari kolom ke-12 (index 11) jika ada
+      const manualNormalPrice = cols[11] ? parseInt(cols[11]?.replace(/[^0-9]/g, '') || '0', 10) : 0;
+
       return {
         id: id || defaultItem?.id || `item-${Math.random().toString(36).substr(2, 9)}`,
         name: name || defaultItem?.name || 'Menu',
@@ -57,10 +60,26 @@ export async function fetchMenuFromSheets() {
         badges: defaultItem?.badges || [],
         hasAddon: cols[8] !== undefined ? hasAddon : (defaultItem?.hasAddon ?? false),
         addonName: addonName || defaultItem?.addonName || '',
-        addonPrice: addonPrice || defaultItem?.addonPrice || 0,
+        addonPrice: cols[10] !== undefined && cols[10] !== '' ? addonPrice : (defaultItem?.addonPrice || 0),
         isCombo: defaultItem?.isCombo || false,
-        normalPrice: defaultItem?.normalPrice,
+        normalPrice: manualNormalPrice > 0 ? manualNormalPrice : (defaultItem?.normalPrice || 0),
       };
+    });
+
+    // Hitung normalPrice secara dinamis untuk paket combo jika tidak diset manual
+    const sateItem = parsedMenu.find((m) => m.id === 'sate-taichan');
+    const pudingItem = parsedMenu.find((m) => m.id === 'es-puding');
+    const autoNormalPrice = 
+      (sateItem ? sateItem.basePrice + (sateItem.addonPrice || 0) : 30000) +
+      (pudingItem ? pudingItem.basePrice : 12000);
+
+    parsedMenu.forEach((m) => {
+      if (m.isCombo || m.id === 'paket-komplit') {
+        // Jika kolom ke-12 kosong atau 0, gunakan total harga satuan sate + lontong + puding otomatis
+        if (!m.normalPrice || m.normalPrice === 0) {
+          m.normalPrice = autoNormalPrice;
+        }
+      }
     });
 
     return parsedMenu.length > 0 ? parsedMenu : initialMenu;

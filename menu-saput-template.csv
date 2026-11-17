@@ -1,0 +1,4 @@
+id,name,category,basePrice,unit,description,image,isAvailable,hasAddon,addonName,addonPrice
+sate-taichan,Sate Taichan Juara,Makanan Utama,25000,1 Porsi (10 Tusuk),Daging ayam fillet dibakar gurih dengan sambal taichan pedas nampol dan jeruk nipis,https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000,Tersedia,Ya,Tambah Lontong Pulen,5000
+es-puding,Es Puding Segar,Minuman & Dessert,12000,1 Cup Besar,Puding sutra lembut dengan kuah susu manis dingin pereda pedas,https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1000,Tersedia,Tidak,,0
+paket-komplit,Paket Puas Saput,Paket Hemat,38000,1 Sate + Lontong + 1 Es Puding,Kombinasi komplit sate taichan lontong pulen dan es puding segar,https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000,Tersedia,Tidak,,0

@@ -13,7 +13,7 @@ export const storeConfig = {
 export const initialMenu = [
   {
     id: "sate-taichan",
-    name: "Sate Taichan Juara",
+    name: "Sate Taichan",
     category: "Makanan Utama",
     basePrice: 25000,
     unit: "1 Porsi (10 Tusuk)",
@@ -27,7 +27,7 @@ export const initialMenu = [
   },
   {
     id: "es-puding",
-    name: "Es Puding Segar",
+    name: "Es Puding Sedot",
     category: "Minuman & Dessert",
     basePrice: 12000,
     unit: "1 Cup Besar",
@@ -44,7 +44,7 @@ export const initialMenu = [
     basePrice: 38000,
     normalPrice: 42000,
     unit: "1 Sate + Lontong + 1 Es Puding",
-    description: "Kombinasi paling pas untuk perut kenyang dan lidah puas! 1 Porsi Sate Taichan (10 tusuk) + Lontong Pulen + 1 Cup Es Puding Segar.",
+    description: "Kombinasi paling pas untuk perut kenyang dan lidah puas! 1 Porsi Sate Taichan (10 tusuk) + Lontong Pulen + 1 Cup Es Puding Sedot.",
     image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop",
     isAvailable: true,
     badges: ["⭐ Paling Hemat", "Diskon Rp 4.000"],

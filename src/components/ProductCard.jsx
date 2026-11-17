@@ -176,5 +176,4 @@ export default function ProductCard({ product }) {
       </div>
     </div>
   );
-  );
 }

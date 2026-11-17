@@ -7,7 +7,7 @@ export const storeConfig = {
   openingHours: "Buka Perdana 16 Desember Di GSG Polinela",
   location: "Politeknik Negeri Lampung",
   instagram: "@saput.official",
-  deliveryNote: "Melayani Dine-in, Takeaway, dan Antar Langsung area Polinela & sekitarnya.",
+  deliveryNote: "Melayani Pre-Order, Dine-in, Takeaway, dan Antar Langsung area Polinela & sekitarnya.",
 };
 
 export const initialMenu = [

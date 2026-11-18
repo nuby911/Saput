@@ -32,15 +32,15 @@ export default function ProductCard({ product }) {
     <div className="bg-[#FFFDF9] rounded-2xl sm:rounded-3xl border border-[#E8D2B5] shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
       {/* Top Image & Badges */}
       <div>
-        <div className="relative h-32 sm:h-64 overflow-hidden bg-neutral-100">
+        <div className="relative aspect-[4/5] sm:aspect-[4/3] w-full overflow-hidden bg-[#FAF4E8]/80 flex items-center justify-center p-1 sm:p-2 border-b border-[#E8D2B5]/40">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            className="w-full h-full object-contain drop-shadow-xs transition-transform duration-300 hover:scale-105"
           />
 
           {/* Availability Badge */}
-          <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex flex-wrap gap-1 sm:gap-1.5">
+          <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex flex-wrap gap-1 sm:gap-1.5 z-10">
             {product.isAvailable ? (
               <span className="bg-[#4A151D]/90 backdrop-blur-sm text-[#FAF4E8] text-[9px] sm:text-[11px] font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full border border-[#E5A93C]/40">
                 Fresh

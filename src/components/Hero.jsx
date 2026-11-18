@@ -73,13 +73,13 @@ export default function Hero({ menuItems = [] }) {
             <div className="relative w-full max-w-md">
               {/* Main Card Spotlight */}
               <div className="bg-[#FFFDF9] p-3.5 rounded-3xl shadow-2xl border-4 border-[#FAF4E8] rotate-1 hover:rotate-0 transition-transform duration-300">
-                <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden bg-neutral-900">
+                <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden bg-neutral-900 flex items-center justify-center">
                   <img
                     src={sateItem?.image || "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop"}
                     alt={sateItem?.name || "Sate Taichan"}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain bg-black/40"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex flex-col justify-end p-4 text-white">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-4 text-white pointer-events-none">
                     <span className="text-[11px] font-bold text-[#E5A93C] uppercase tracking-wider">
                       Signature Menu
                     </span>
@@ -91,11 +91,11 @@ export default function Hero({ menuItems = [] }) {
 
                 {/* Overlapping Floating Drink Badge */}
                 <div className="absolute -bottom-4 left-2 sm:-left-4 bg-[#4A151D] text-[#FAF4E8] p-2.5 rounded-2xl shadow-xl border-2 border-[#E5A93C] flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl overflow-hidden bg-[#FAF4E8] shrink-0">
+                  <div className="w-12 h-12 rounded-xl overflow-hidden bg-[#FAF4E8] shrink-0 flex items-center justify-center p-0.5">
                     <img
                       src={pudingItem?.image || "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=300&auto=format&fit=crop"}
                       alt={pudingItem?.name || "Es Puding"}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                   </div>
                   <div className="pr-2">

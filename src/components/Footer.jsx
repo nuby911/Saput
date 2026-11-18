@@ -27,7 +27,7 @@ export default function Footer() {
               </div>
               <h4 className="font-bold text-[#FAF4E8] text-base">Pilih Menu</h4>
               <p className="text-xs text-[#D9C8B0] leading-relaxed">
-                Tentukan jumlah Sate Taichan (bisa + lontong) dan Es Puding yang kamu mau.
+                Tentukan jumlah Sate Taichan (sudah + lontong), Es Puding, atau tambah ekstra lontong.
               </p>
             </div>
 

@@ -6,19 +6,15 @@ import { formatRupiah } from '../utils/whatsapp';
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   const [qty, setQty] = useState(1);
-  const [withLontong, setWithLontong] = useState(false);
   const [justAdded, setJustAdded] = useState(false);
 
-  const unitPrice = withLontong
-    ? product.basePrice + (product.addonPrice || 0)
-    : product.basePrice;
-
+  const unitPrice = product.basePrice;
   const totalPrice = unitPrice * qty;
 
   const handleAddToCart = () => {
     if (!product.isAvailable) return;
 
-    addToCart(product, qty, withLontong);
+    addToCart(product, qty, false);
     setJustAdded(true);
     setTimeout(() => {
       setJustAdded(false);
@@ -27,6 +23,8 @@ export default function ProductCard({ product }) {
 
   const incrementQty = () => setQty((prev) => prev + 1);
   const decrementQty = () => setQty((prev) => (prev > 1 ? prev - 1 : 1));
+
+  const isSate = product.id === 'sate-taichan';
 
   return (
     <div className="bg-[#FFFDF9] rounded-2xl sm:rounded-3xl border border-[#E8D2B5] shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col lg:flex-row lg:items-stretch justify-between">
@@ -81,35 +79,18 @@ export default function ProductCard({ product }) {
             {product.description}
           </p>
 
-          {/* Add-on Toggle (Khusus Sate Taichan - Opsi Lontong) */}
-          {product.hasAddon && (
-            <div
-              onClick={() => setWithLontong(!withLontong)}
-              className={`p-1.5 sm:p-3 rounded-xl sm:rounded-2xl border transition-all cursor-pointer select-none active:scale-[0.98] touch-manipulation mt-2 ${
-                withLontong
-                  ? 'bg-[#F4ECE1] border-[#4A151D] shadow-2xs'
-                  : 'bg-[#FAF4E8] border-[#E8D2B5] hover:border-[#D9C8B0]'
-              }`}
-            >
-              <div className="flex items-center justify-between gap-1">
-                <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0">
-                  <div
-                    className={`w-4 h-4 sm:w-5 sm:h-5 rounded-md flex items-center justify-center border transition-colors shrink-0 ${
-                      withLontong
-                        ? 'bg-[#4A151D] border-[#4A151D] text-white'
-                        : 'bg-white border-[#D9C8B0]'
-                    }`}
-                  >
-                    {withLontong && <Check className="w-3 h-3 stroke-[3]" />}
-                  </div>
-                  <span className="text-[11px] sm:text-xs lg:text-sm font-bold text-[#241718] truncate">
-                    {product.addonName || '+ Lontong'}
-                  </span>
-                </div>
-                <span className="text-[10px] sm:text-xs font-black text-[#4A151D] bg-[#FFFDF9] px-1.5 py-0.5 rounded-lg border border-[#E8D2B5] shrink-0">
-                  +{formatRupiah(product.addonPrice)}
+          {/* Informasi Khusus Sate: Sudah termasuk lontong bawaan */}
+          {isSate && (
+            <div className="bg-[#FAF4E8] border border-[#E8D2B5] rounded-xl sm:rounded-2xl p-2 sm:p-2.5 flex items-center justify-between gap-1 text-[11px] sm:text-xs mt-1 sm:mt-2">
+              <div className="flex items-center gap-1.5 min-w-0">
+                <span className="text-sm sm:text-base">🍚</span>
+                <span className="font-bold text-[#241718] truncate">
+                  Sudah Termasuk 1 Lontong
                 </span>
               </div>
+              <span className="text-[10px] font-black text-[#4A151D] bg-[#FFFDF9] px-2 py-0.5 rounded-lg border border-[#E8D2B5] shrink-0">
+                Komplit
+              </span>
             </div>
           )}
         </div>

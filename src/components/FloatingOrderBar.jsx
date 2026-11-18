@@ -50,11 +50,17 @@ export default function FloatingOrderBar() {
               {cart.map((item) => (
                 <div key={item.cartKey} className="pt-3 first:pt-0 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-12 h-12 rounded-xl object-cover bg-neutral-100"
-                    />
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-12 h-12 rounded-xl object-contain bg-[#FAF4E8] p-0.5 border border-[#E8D2B5]/50"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 rounded-xl bg-[#FAF4E8] border border-[#E8D2B5] flex items-center justify-center text-xl shrink-0">
+                        {item.id === 'tambah-lontong' ? '🍚' : '🍢'}
+                      </div>
+                    )}
                     <div>
                       <h4 className="font-bold text-sm text-[#241718] leading-tight">
                         {item.name}

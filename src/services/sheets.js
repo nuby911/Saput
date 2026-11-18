@@ -115,12 +115,35 @@ export async function fetchMenuFromSheets() {
       };
     });
 
+    // Pisahkan addon Lontong menjadi produk menu independen (harga & jumlah terpisah dari sate)
+    const sateWithAddon = parsedMenu.find((m) => (m.id === 'sate-taichan' || m.hasAddon) && m.addonPrice > 0);
+    const existingLontong = parsedMenu.find((m) => m.id === 'tambah-lontong');
+
+    if (sateWithAddon && !existingLontong) {
+      parsedMenu.push({
+        id: 'tambah-lontong',
+        name: sateWithAddon.addonName || 'Tambah Lontong Pulen',
+        category: 'Menu Tambahan',
+        basePrice: sateWithAddon.addonPrice || 3000,
+        unit: '1 Pcs',
+        description: 'Lontong pulen ekstra jika 1 porsi bawaan sate dirasa kurang.',
+        image: sateWithAddon.image,
+        isAvailable: true,
+        badges: ['🍚 Ekstra'],
+        hasAddon: false,
+        isAddon: true,
+        isCombo: false,
+      });
+      // Sate 15k sudah termasuk lontong bawaan, nonaktifkan hasAddon agar tidak menggabungkan harga secara paksa
+      sateWithAddon.hasAddon = false;
+    }
+
     // Hitung normalPrice secara dinamis: Harga Sate + Harga Minuman (Es Puding)
     const sateItem = parsedMenu.find((m) => m.id === 'sate-taichan');
     const pudingItem = parsedMenu.find((m) => m.id === 'es-puding');
     const autoNormalPrice = 
       (sateItem ? sateItem.basePrice : 15000) +
-      (pudingItem ? pudingItem.basePrice : 12000);
+      (pudingItem ? pudingItem.basePrice : 10000);
 
     parsedMenu.forEach((m) => {
       if (m.isCombo || m.id === 'paket-komplit') {

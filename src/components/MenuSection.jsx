@@ -1,10 +1,12 @@
 import React from 'react';
 import ProductCard from './ProductCard';
+import ExtraAddonCard from './ExtraAddonCard';
 import ComboSection from './ComboSection';
 
 export default function MenuSection({ menuItems }) {
   // Filter individual hero items (Sate Taichan & Es Puding)
-  const heroItems = menuItems.filter((item) => !item.isCombo);
+  const heroItems = menuItems.filter((item) => !item.isCombo && !item.isAddon && item.id !== 'tambah-lontong');
+  const addonItem = menuItems.find((item) => item.isAddon || item.id === 'tambah-lontong');
   const comboItem = menuItems.find((item) => item.isCombo);
   const sateItem = menuItems.find((item) => item.id === 'sate-taichan') || heroItems[0];
   const pudingItem = menuItems.find((item) => item.id === 'es-puding') || heroItems[1];
@@ -20,7 +22,7 @@ export default function MenuSection({ menuItems }) {
           Pilihan Menu Utama
         </h2>
         <p className="hidden sm:block text-xs sm:text-sm text-neutral-600 mt-2">
-          Pilih porsi favoritmu, tambahkan opsi lontong hangat, dan langsung pesan mudah via WhatsApp!
+          Pilih porsi favoritmu, tambahkan ekstra lontong satuan jika perlu, dan langsung pesan via WhatsApp!
         </p>
       </div>
 
@@ -30,6 +32,11 @@ export default function MenuSection({ menuItems }) {
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
+
+      {/* Menu Tambahan / Ekstra Lontong Satuan */}
+      {addonItem && (
+        <ExtraAddonCard addonItem={addonItem} />
+      )}
 
       {/* Combo Upselling Section */}
       {comboItem && (

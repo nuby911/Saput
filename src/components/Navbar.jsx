@@ -10,7 +10,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-[#4A151D] text-[#FAF4E8] shadow-md border-b border-[#5E1B25]">
       {/* Main Navbar */}
-      <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
         {/* Brand Logo & Name */}
         <a href="#" className="flex items-center gap-3 group">
           <div className="relative">
@@ -38,13 +38,38 @@ export default function Navbar() {
           </div>
         </a>
 
+        {/* Desktop Quick Navigation Links */}
+        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-[#E8D2B5]">
+          <a
+            href="#menu-section"
+            className="hover:text-[#E5A93C] transition-colors"
+          >
+            Menu Utama
+          </a>
+          <a
+            href="#combo-section"
+            className="hover:text-[#E5A93C] transition-colors flex items-center gap-1.5"
+          >
+            <span>Paket Bundling</span>
+            <span className="bg-[#D33A2C] text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">
+              Hemat
+            </span>
+          </a>
+          <a
+            href="#lokasi"
+            className="hover:text-[#E5A93C] transition-colors"
+          >
+            Jadwal & Lokasi
+          </a>
+        </nav>
+
         {/* Right CTA */}
         <div className="flex items-center gap-3">
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-tactile inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1EBE5D] text-white text-sm font-bold px-3.5 py-2 rounded-full shadow-sm"
+            className="btn-tactile inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1EBE5D] text-white text-sm font-bold px-4 py-2.5 rounded-full shadow-sm"
           >
             <MessageCircle className="w-4 h-4 fill-white" />
             <span className="hidden sm:inline">Chat Admin</span>

@@ -21,16 +21,16 @@ export default function ComboSection({ comboProduct, sateItem, pudingItem }) {
   };
 
   return (
-    <section id="combo-section" className="my-8 sm:my-10 scroll-mt-28">
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#4A151D] via-[#5D1B26] to-[#4A151D] text-[#FAF4E8] rounded-3xl p-5 sm:p-8 border-2 border-[#E5A93C] shadow-xl">
+    <section id="combo-section" className="my-8 sm:my-12 lg:my-14 scroll-mt-28">
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#4A151D] via-[#5D1B26] to-[#4A151D] text-[#FAF4E8] rounded-3xl p-5 sm:p-8 lg:p-10 border-2 border-[#E5A93C] shadow-xl">
         {/* Decorative corner tag */}
         <div className="absolute -top-1 -right-1 bg-[#E5A93C] text-[#370F15] text-[11px] sm:text-xs font-black px-3.5 sm:px-4 py-1.5 rounded-bl-2xl shadow-md uppercase tracking-wider">
           {savings > 0 ? `⭐ Lebih Hemat ${formatRupiah(savings)}` : '⭐ Rekomendasi Menu Komplit'}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
           {/* Left: Info & Description */}
-          <div className="md:col-span-7 space-y-3">
+          <div className="lg:col-span-7 space-y-3.5 sm:space-y-4">
             <div className="flex items-center gap-2">
               {savings > 0 ? (
                 <span className="bg-[#D33A2C] text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
@@ -48,44 +48,75 @@ export default function ComboSection({ comboProduct, sateItem, pudingItem }) {
               </span>
             </div>
 
-            <h3 className="font-heading text-2xl sm:text-3xl font-black text-[#FAF4E8]">
+            <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-[#FAF4E8]">
               {comboProduct.name}
             </h3>
 
-            <p className="text-sm text-[#E8D2B5] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#E8D2B5] leading-relaxed max-w-xl">
               {comboProduct.description}
             </p>
 
-            {/* Content Pills */}
-            <div className="flex flex-wrap gap-2 text-xs font-medium text-[#FAF4E8]">
-              <span className="bg-black/30 border border-white/10 px-3 py-1 rounded-lg">
-                🍢 {sateItem?.unit || '1 Porsi'} {sateItem?.name || 'Sate Taichan'}
-              </span>
-              <span className="bg-black/30 border border-white/10 px-3 py-1 rounded-lg">
-                🍧 {pudingItem?.unit || '1 Cup'} {pudingItem?.name || 'Es Puding'}
-              </span>
+            {/* Visual Duo Items */}
+            <div className="pt-1 flex flex-wrap items-center gap-2.5 sm:gap-3">
+              <div className="flex items-center gap-2 sm:gap-2.5 bg-black/40 border border-white/15 px-3 py-1.5 sm:py-2 rounded-2xl">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden bg-white/10 shrink-0 flex items-center justify-center p-0.5">
+                  <img
+                    src={sateItem?.image}
+                    alt={sateItem?.name}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div>
+                  <span className="text-xs sm:text-sm font-bold block text-white">
+                    {sateItem?.name || 'Sate Taichan'}
+                  </span>
+                  <span className="text-[10px] text-[#E5A93C]">
+                    {sateItem?.unit || '1 Porsi (10 Tusuk)'}
+                  </span>
+                </div>
+              </div>
+
+              <span className="text-[#E5A93C] font-black text-lg sm:text-xl">+</span>
+
+              <div className="flex items-center gap-2 sm:gap-2.5 bg-black/40 border border-white/15 px-3 py-1.5 sm:py-2 rounded-2xl">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden bg-white/10 shrink-0 flex items-center justify-center p-0.5">
+                  <img
+                    src={pudingItem?.image}
+                    alt={pudingItem?.name}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div>
+                  <span className="text-xs sm:text-sm font-bold block text-white">
+                    {pudingItem?.name || 'Es Puding'}
+                  </span>
+                  <span className="text-[10px] text-amber-200">
+                    {pudingItem?.unit || '1 Cup'}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Right: Pricing & CTA */}
-          <div className="md:col-span-5 bg-[#370F15]/90 border border-[#E5A93C]/30 p-5 rounded-2xl flex flex-col justify-between items-center text-center space-y-3">
+          <div className="lg:col-span-5 bg-[#370F15]/90 border border-[#E5A93C]/30 p-5 sm:p-6 lg:p-7 rounded-2xl flex flex-col justify-between items-center text-center space-y-3.5">
             <div>
               {normalPrice > comboProduct.basePrice && (
-                <span className="text-xs text-neutral-400 line-through block">
+                <span className="text-xs sm:text-sm text-neutral-400 line-through block">
                   Harga Normal: {formatRupiah(normalPrice)}
                 </span>
               )}
-              <div className="font-heading text-3xl font-black text-[#E5A93C]">
+              <div className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-[#E5A93C] my-0.5">
                 {formatRupiah(comboProduct.basePrice)}
               </div>
-              <span className="text-[11px] text-[#FAF4E8] opacity-80">
+              <span className="text-[11px] sm:text-xs text-[#FAF4E8] opacity-85">
                 Sudah komplit makan + minum
               </span>
             </div>
 
             <button
               onClick={handleAddCombo}
-              className={`btn-tactile w-full min-h-[48px] py-3 px-4 rounded-xl font-heading font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-md select-none touch-manipulation active:scale-[0.98] ${
+              className={`btn-tactile w-full min-h-[48px] sm:min-h-[52px] py-3.5 px-5 rounded-2xl font-heading font-bold text-sm sm:text-base flex items-center justify-center gap-2 transition-all shadow-md select-none touch-manipulation active:scale-[0.98] ${
                 justAdded
                   ? 'bg-emerald-500 text-white'
                   : 'bg-[#E5A93C] hover:bg-[#d4962c] text-[#370F15]'

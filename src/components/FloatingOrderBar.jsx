@@ -131,8 +131,8 @@ export default function FloatingOrderBar() {
       )}
 
       {/* Floating Bottom Bar (Always fixed at bottom when items > 0) */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#4A151D] text-[#FAF4E8] border-t-2 border-[#E5A93C] shadow-2xl px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
-        <div className="max-w-4xl mx-auto flex items-center justify-between gap-3">
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#4A151D] text-[#FAF4E8] border-t-2 border-[#E5A93C] shadow-2xl px-4 sm:px-6 lg:px-8 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+        <div className="max-w-6xl xl:max-w-7xl mx-auto flex items-center justify-between gap-3">
           
           {/* Left summary & toggle button */}
           <button

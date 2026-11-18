@@ -8,21 +8,21 @@ export default function Footer() {
   )}`;
 
   return (
-    <footer className="bg-[#370F15] text-[#E8D2B5] pt-12 pb-28 sm:pb-20 border-t-4 border-[#4A151D]">
-      <div className="max-w-5xl mx-auto px-4">
+    <footer id="lokasi" className="bg-[#370F15] text-[#E8D2B5] pt-12 sm:pt-16 pb-28 sm:pb-20 border-t-4 border-[#4A151D] scroll-mt-10">
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 3 Step Ordering Process Guide */}
-        <div className="mb-12 bg-[#4A151D] rounded-3xl p-6 sm:p-8 border border-[#5E1B25] text-center">
+        <div className="mb-12 lg:mb-16 bg-[#4A151D] rounded-3xl p-6 sm:p-8 lg:p-10 border border-[#5E1B25] text-center shadow-lg">
           <span className="text-xs font-extrabold uppercase tracking-widest text-[#E5A93C]">
             Cara Pemesanan Mudah
           </span>
-          <h3 className="font-heading text-2xl font-bold text-[#FAF4E8] mt-1 mb-6">
+          <h3 className="font-heading text-2xl sm:text-3xl font-bold text-[#FAF4E8] mt-1 mb-6 sm:mb-8">
             Hanya 3 Langkah Cepat
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="space-y-2">
-              <div className="w-10 h-10 rounded-full bg-[#E5A93C] text-[#370F15] font-black text-lg flex items-center justify-center mx-auto shadow-md">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
+            <div className="space-y-2.5 bg-[#370F15]/50 border border-white/5 p-4 rounded-2xl">
+              <div className="w-11 h-11 rounded-full bg-[#E5A93C] text-[#370F15] font-black text-lg flex items-center justify-center mx-auto shadow-md">
                 1
               </div>
               <h4 className="font-bold text-[#FAF4E8] text-base">Pilih Menu</h4>
@@ -31,8 +31,8 @@ export default function Footer() {
               </p>
             </div>
 
-            <div className="space-y-2">
-              <div className="w-10 h-10 rounded-full bg-[#25D366] text-white font-black text-lg flex items-center justify-center mx-auto shadow-md">
+            <div className="space-y-2.5 bg-[#370F15]/50 border border-white/5 p-4 rounded-2xl">
+              <div className="w-11 h-11 rounded-full bg-[#25D366] text-white font-black text-lg flex items-center justify-center mx-auto shadow-md">
                 2
               </div>
               <h4 className="font-bold text-[#FAF4E8] text-base">Klik Pesan via WA</h4>
@@ -41,8 +41,8 @@ export default function Footer() {
               </p>
             </div>
 
-            <div className="space-y-2">
-              <div className="w-10 h-10 rounded-full bg-[#D33A2C] text-white font-black text-lg flex items-center justify-center mx-auto shadow-md">
+            <div className="space-y-2.5 bg-[#370F15]/50 border border-white/5 p-4 rounded-2xl">
+              <div className="w-11 h-11 rounded-full bg-[#D33A2C] text-white font-black text-lg flex items-center justify-center mx-auto shadow-md">
                 3
               </div>
               <h4 className="font-bold text-[#FAF4E8] text-base">Konfirmasi & Nikmati</h4>
@@ -54,7 +54,7 @@ export default function Footer() {
         </div>
 
         {/* Store Detail Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-[#5E1B25]/60 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-8 sm:pb-12 border-b border-[#5E1B25]/60 text-sm">
           
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-3">

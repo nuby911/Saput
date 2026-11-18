@@ -10,19 +10,22 @@ export default function MenuSection({ menuItems }) {
   const pudingItem = menuItems.find((item) => item.id === 'es-puding') || heroItems[1];
 
   return (
-    <section id="menu-section" className="max-w-5xl mx-auto px-3 sm:px-4 py-4 sm:py-10">
+    <section id="menu-section" className="max-w-6xl xl:max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-10 lg:py-14">
       {/* Section Header */}
-      <div className="text-center max-w-xl mx-auto mb-4 sm:mb-8">
-        <span className="text-[10px] sm:text-xs uppercase font-extrabold tracking-widest text-[#D33A2C] bg-[#D33A2C]/10 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
+      <div className="text-center max-w-2xl mx-auto mb-4 sm:mb-8 lg:mb-10">
+        <span className="text-[10px] sm:text-xs uppercase font-extrabold tracking-widest text-[#D33A2C] bg-[#D33A2C]/10 px-3 py-1 rounded-full">
           Daftar 2 Menu Saput
         </span>
-        <h2 className="font-heading text-xl sm:text-4xl font-extrabold text-[#241718] mt-1.5">
+        <h2 className="font-heading text-xl sm:text-4xl lg:text-5xl font-extrabold text-[#241718] mt-2">
           Pilihan Menu Utama
         </h2>
+        <p className="hidden sm:block text-xs sm:text-sm text-neutral-600 mt-2">
+          Pilih porsi favoritmu, tambahkan opsi lontong hangat, dan langsung pesan mudah via WhatsApp!
+        </p>
       </div>
 
       {/* Duo Grid: 2 Hero Products SIDE BY SIDE on Mobile & Desktop */}
-      <div className="grid grid-cols-2 gap-2.5 sm:gap-6 lg:gap-8 items-stretch">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-5 md:gap-6 lg:gap-8 xl:gap-10 items-stretch">
         {heroItems.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
